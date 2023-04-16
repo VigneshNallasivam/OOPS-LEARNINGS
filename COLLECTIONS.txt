@@ -1,0 +1,289 @@
+//COLLECTION
+          1.ARRAY LIST
+          2.HASH MAP
+		  
+                                                      COLLECTION
+									                  ==========
+-Used to store group of objects.
+-Any group of individual objects which are represented as a single unit is known as the collection of the objects.
+-A framework(in-built interface/class/methods) that provides an architecture to store and manipulate the group of objects. 
+-Does not store any primitives
+
+COLLECTION vs COLLECTIONS :
+---------------------------
+->>Collection is used to represent a single unit with a group of individual objects 
+->>collections is used to operate on collection with several utility methods. 
+->>Simply, The Collection is an interface whereas Collections is a utility class in Java.
+->>Since java 8,
+              - collection is an interface with static as well as abstract and default methods 
+			  - whereas collections operate only with static methods.
+
+                                                                          ARRAY LIST
+																		  ==========
+																 (import java.util.ArrayList;) 
+-ArrayList class uses a dynamic array for storing the elements. 
+-It is like an array, but there is no size limit. 
+-We can add or remove elements anytime.
+-As in case of ARRAY ,size is fixed and we dont have any built in method to add,remove,replace,get,search,size etc..,
+ (As size fixed there is no possibility of increasing/Decreasing Size)
+-* In Collection we can't store primitive data-types : int, double, char, boolean
+ * We can Store Only Objects
+-* Inital Size is 10 or We can decide Size 3
+ * If Full => old_size * 3/2
+ 
+ Example:-
+ ---------
+     import java.util.ArrayList;  
+     public class Sample
+	 {  
+     public static void main(String args[])
+	 {  
+          ArrayList<String> obj = new ArrayList<String>();   //Syntax
+          obj.add("Mango");                                  //Adding object in arraylist    
+          obj.add("Apple");    
+          obj.add("Banana");    
+          obj.add("Grapes"); 		  
+          System.out.println(obj);  
+     }  
+    }  
+ OUTPUT >>
+ [Mango, Apple, Banana, Grapes]
+ 
+ Example:-
+ ---------
+     import java.util.*;  
+     public class Sample
+	 {  
+     public static void main(String args[])
+	 {  
+      ArrayList<String> list = new ArrayList<String>();
+      list.add("Mango");  
+      list.add("Apple");    
+      list.add("Banana");    
+      list.add("Grapes"); 
+	  
+      for(String fruit:list)                //Syntax :  for(datatype var.name:objname)  //Traversing type loop //For-Each loop
+      {	  
+        System.out.println(fruit);   
+      }		
+      
+     }  
+    }  
+	
+OUTPUT >>
+Mango
+Apple
+Banana
+Grape
+
+
+
+Example:-
+---------
+import java.util.ArrayList;
+import java.util.Collections;
+public class Sample
+{
+	public static void main(String[] args)
+	{
+		ArrayList<Integer> list = new ArrayList<>();
+		list.add(20);
+		list.add(10);
+		list.add(5);
+		list.add(345);
+		list.add(256);
+		System.out.println(list);
+		Collections.sort(list);           //Ascending Order Sorting
+		System.out.println(list);
+		Collections.reverse(list);        //Descending Order Sorting
+		System.out.println(list);
+		for(Integer numbers:list)         //Using For-Each Loop for ArrayList
+		{
+			System.out.println(numbers);
+		}
+		for(int i=0 ; i<list.size() ;i++) //Using For Loop for ArrayList
+		{
+			System.out.println(list.get(i));
+		}
+	}
+
+}
+OUTPUT>>
+--------
+[20, 10, 5, 345, 256]
+[5, 10, 20, 256, 345]
+[345, 256, 20, 10, 5]
+345
+256
+20
+10
+5
+345
+256
+20
+10
+5
+
+Example:-
+---------
+//CONVERSION OF ARRAY INTO ARRAY-LIST
+import java.util.ArrayList;
+public class Sample 
+{
+	public static void main(String[] args)
+	{
+		int array[] = {10,20,30,40,50};
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for(int i=0;i<array.length;i++)
+		{
+			list.add(new Integer(array[i]));
+		}
+		System.out.println(list);
+	}
+}
+OUTPUT>>
+--------
+[10, 20, 30, 40, 50]
+
+
+_________________________________________________________________________________________________________________________________________________________________________________________
+
+                                                                          HASH MAP
+																		  ========
+                                                                 (import java.util.HashMap;)
+-Collection where Data is stored as Key-Value Pair.
+-Key & Value can be any class type.
+-Syntax:-
+   HashMap<data-type> obj.name = new HashMap<>();
+-* Adding data      => Use put method                                //map.put(1,100); i.e objectname.put(key,value);
+ * Modifying data   => Use put method with same key& different value //map.put(1,10);  i.e objectname.put(key,value);
+ * Deleting element => Use remove method with key                    //map.remove(1);  i.e objectname.remove(key);
+ * Getting Element  => Use get method with key                       //map.get(2);     i.e objectname.get(key);
+ * Traverse HashMap => Use for-each loop                             // Set keys = map.keySet();
+
+-HashMap By default size is 16.
+-It get's doubled once 75% is Full (load factor)
+-HashMap can be created in three ways:
+    // Default size 16 & doubles once 75% full
+	HashMap map = new HashMap();
+	// Given size 20 & doubles once 75% full
+	HashMap map = new HashMap(20);
+	// Given size 10 & doubles once 50% full
+	HashMap map = new HashMap(10,0.5f);
+
+Example:-
+-------
+//NORMAL HASH MAP CODING
+import java.util.HashMap;
+public class Sample
+{
+public static void main(String[] args)
+{
+HashMap<String,Integer> map = new HashMap<>();
+map.put("Mango",10);
+map.put("Apple",20);
+map.put("Orange",30);
+map.put("Grapes",40);
+map.put("Banana",50);
+System.out.println("Fruits Are: " +map);
+}
+}
+
+OUTPUT>>
+--------
+Fruits Are: {Apple=20, Grapes=40, Mango=10, Orange=30, Banana=50}
+
+
+Example:-
+-------
+//NORMAL HASH MAP WITH FOR EACH LOOP CODING
+import java.util.HashMap;
+public class Sample 
+{
+	public static void main(String[] args)
+	{
+		HashMap<String,Integer> map = new HashMap<>();
+		map.put("Mango",10);   
+		map.put("Apple",20);
+		map.put("Orange",30);
+		map.put("Grapes",40);
+		map.put("Banana",50);
+		System.out.println("Fruits Are: " +map);
+
+		System.out.println("Keys: ");                                  //For-Each loop for only Keys
+		for (String key : map.keySet()) 
+		{
+			System.out.println(key);
+		}
+
+		System.out.println("Values: ");                               //For-Each loop for only Values
+		for (Integer value : map.values()) 
+		{
+			System.out.println(value);
+		}
+	}
+}
+OUTPUT>>
+--------
+Fruits Are: {Apple=20, Grapes=40, Mango=10, Orange=30, Banana=50}
+Keys: 
+Apple
+Grapes
+Mango
+Orange
+Banana
+Values: 
+20
+40
+10
+30
+50
+50
+ 
+
+Example:-
+---------
+//USING SET IN A HASH-MAP CODING
+//Set is mainly used to avoid duplicate elements
+import java.util.HashSet;
+import java.util.Set;
+public class Sample 
+{
+	public static void main(String[] args)
+	{
+	Set<String> ref = new HashSet<String>();
+	ref.add("Raghav");
+	ref.add("Vignesh");
+	ref.add("Raghav");
+	ref.add("Satheesh");
+	ref.add("Raghav");
+	System.out.println(ref);
+	}
+}
+OUTPUT>>
+--------
+[Raghav, Vignesh, Satheesh]
+
+Example:-
+---------
+//USING TREE-SET FOR SORTING AND DESCENDING Order
+//Tree-Set is mainly used for giving input elements in an sorted manner
+import java.util.TreeSet;
+public class Sample 
+{
+	public static void main(String[] args)
+	{
+		TreeSet<Integer> tree = new TreeSet<>();
+		tree.add(33);
+		tree.add(13);
+		tree.add(10);
+		tree.add(5);
+		tree.add(55);
+		System.out.println("Ascending Order Is : "+tree);
+	}
+}
+OUTPUT>>
+--------
+Ascending Order Is : [5, 10, 13, 33, 55]
+
+	

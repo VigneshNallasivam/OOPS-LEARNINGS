@@ -1,0 +1,88 @@
+//ENCAPSULATION
+                                                                              ENCAPSULATION
+																			  =============
+-Bundling/Wrapping of Data And Methods as a single unit
+-Using 'Private' keyword we can Protect datas
+-Like Capsules
+             (((Data/Variables|Methods)))
+			 
+			 Class
+			 {
+			 Data Members                               
+			 +
+			 methods (Behaviours)
+			 }
+			 
+-Uses Getter And Setter
+
+
+Explanation Using Example:-
+--------------------------                                         |
+                | {ENGINES,                                        | {moving();
+    CAR         | TYRES,                                           | Steering();
+   (class)      |HEADLIGHTS,......}components/datas/Variables      | dimlights();......}functions/methods/behaviours
+		    \                                                      |                                                    /
+	         \                                                                                                         /
+              \___________________________________________|ENCAPSULATION|_____________________________________________/			 
+			   
+Example:-
+--------
+class Area
+{
+  int length;
+  int breadth;
+ 
+  Area(int length, int breadth) 
+  {
+    this.length = length;
+    this.breadth = breadth;
+  }
+ 
+  public void getArea()
+  {
+    int area = length * breadth;
+    System.out.println("Area: " + area);
+  }
+}
+ 
+class Main 
+{
+  public static void main(String[] args) 
+  {
+    Area obj = new Area(2, 16);
+    obj.getArea();
+  }
+}
+
+OUTPUT >>
+Area: 32
+
+Example:-
+--------
+class Name 
+{
+  private int age;                                                  // Private is using to hide the data
+ 
+ public int getAge()                                               // getter
+  { 
+  return age; 
+  } 
+  
+ public void setAge(int age)                                        // setter
+    {
+        this.age = age;
+    } 
+}
+ 
+class Main
+{
+    public static void main(String[] args)
+    {
+       Name n1 = new Name();
+       n1.setAge(19);
+       System.out.println("The age of the person is: "+ n1.getAge());
+    }
+}
+
+OUTPUT >>
+The age of the person is: 19

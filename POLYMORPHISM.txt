@@ -1,0 +1,130 @@
+//POLYMORPHISM
+                                                                           POLYMORPHISM
+																		   ============
+-Same Object behaves differently in different situataions
+-Polymorphism in Object Oriented Programming occurs when there are one or more classes or objects related to each other by inheritance.
+
+TYPES :-
+--------
+ 1. Compile Time Polymorphism : While Compiling Program         (Method Overloading)
+ 2. Run Time Polymorphism     : While running/exceuting program (Method Overriding)
+ 
+ 
+ 
+                                                                        1.METHOD OVERLOADING
+																		====================
+-Increase Readability of Program
+-LOGIC => Multiple methods will have same name but with different number of parameters & different data-types of Parameters
+
+Example:-
+--------
+public class MethodOverloading 
+{
+    
+    void show(int num1)
+    {
+        System.out.println("number 1 : " + num1);
+    }
+ 
+    void show(int num1, int num2)
+    {
+        System.out.println("number 1 : " + num1);
+		System.out.println("number 2 : " + num2);
+               
+    }
+	
+	 void show(int num1, int num2, long num3)
+    {
+        System.out.println("number 1 : " + num1);
+		System.out.println("number 2 : " + num2);
+        System.out.println("number 3 : " + num3);      
+    }
+	
+	 void show(int num1, int num2, long num3, String word4)
+    {
+        System.out.println("number 1 : " + num1);
+		System.out.println("number 2 : " + num2);
+        System.out.println("number 3 : " + num3);
+        System.out.println("Words    : " + word4);		
+    }
+ 
+    public static void main(String[] args)
+    {
+        MethodOverloading obj = new MethodOverloading();
+        obj.show(3);
+        obj.show(4, 5); 
+		obj.show(4, 5, 73393); 
+		obj.show(4, 5, 7339323, "Hai! HelloWorld"); 
+    }
+}
+
+OUTPUT >>
+---------
+number 1 : 3
+number 1 : 4
+number 2 : 5
+number 1 : 4
+number 2 : 5
+number 3 : 7339
+number 1 : 4
+number 2 : 5
+number 3 : 7339323
+Words    : Hai! HelloWorld
+
+
+
+
+                                                                        1.METHOD OVERRIDING
+																		====================
+-Process in which a call to an overridden method is resolved at runtime rather than compile-time. 
+-LOGIC =>Changing logic/Implementation of parent class method in child class
+
+Example:-
+--------
+//File-A//
+class Parent
+{
+		int num=10;
+	
+		void show()
+		{
+			System.out.println("Showing something in Parent....");
+		}
+}
+	
+class Child extends Parent
+{
+	int num=100;
+	void show()
+		{
+			System.out.println(num); //100
+			System.out.println(super.num); //10
+			
+			super.show();
+			System.out.println("Showing something in Child....");
+		}
+		
+	int square(int num)
+		{
+			return num * num;
+		}
+		
+}
+//File-B//
+public class Overall
+{
+public static void main (String[] args)
+{
+Child obj1=new Child();
+obj1.show();
+System.out.println(obj1.square(100));
+}
+}
+
+OUTPUT>>
+--------
+100
+10
+Showing something in Parent....
+Showing something in Child....	
+10000

@@ -1,0 +1,201 @@
+//ABSTRACTION
+                                                                            ABSTRACTION
+																			===========  
+-Abstraction is the process of hiding the internal details of an application from the outer world.
+-Show necessary functionalities to the user by hiding unwanted implementation
+-Abstraction is simply hiding the unwanted information/details from the user.
+              
+			  Example1: ATM => User can withdraw money
+			                   by using any Card and he 
+			                   is not bothered how actually
+			                   it's working and what program
+			                   they were written
+			
+	          Example2: SMARTPHONE => By entering mobile number
+			                          and clicking on green button
+					                  Call will  be connected user don't cares
+					                  how actually call will be done and how 
+					                  network are used in making call.
+									  
+-In Java we can do Abstraction in Two ways
+	1. Interface      (100%       Abstraction)
+	2. Abstract class (0% to 100% Abstraction)
+	
+	                                                                         INTERFACE
+																			 =========
+- Blue-print of Class where we list out all functionalities using abstract methods /To Achieve Multiple Inheritence
+	  * Abstract methods -> Methods without logic  
+	  * Classes which want to give logic can do so by using 'implements' keyword.
+	  * If any class implementing any interface that class should give logic for all abstract methods
+	  * Can't create Object of an interface as all methods are abstract no logic found to execute
+	  * Here 'final' keyword is used mostly in interface segment
+	  * In this inteface 2 keywords are must 
+	     1.'interface' keyword
+		 2.'implements' keyword
+Example:-
+--------
+public interface UseMe                         //File 'A'    //one time declared functions & variables
+{
+	void print();
+	
+}
+
+public class Xclass implements UseMe           //File 'B' //Xclass defining one time declared interface UseMe
+{
+void print()
+{
+System.out.println("Hello");
+}
+public static void main(String[] args)
+{
+	Xclass obj = new Xclass();
+	obj.print();
+}
+}
+
+OUTPUT>>
+--------
+Hello
+
+Example:-
+---------
+//FILE - A//
+public interface Unit 
+{
+	public int num = 0;
+	public String word = "";
+	public String show(String word);
+	public int print(int num);
+
+}
+
+//FILE-B//
+public class Sample implements Unit
+{
+	public int print(int num)
+	{
+		System.out.println("Hello");
+		return num;
+	}
+	public String show(String word)
+	{
+		System.out.println("Hai");
+		return word;
+	}
+	public static void main(String[] args)
+	{
+		Sample objx = new Sample();
+		System.out.println(objx.print(10));
+		System.out.println(objx.show("hh"));
+	}
+}
+OUTPUT>>
+--------
+Hello
+10
+Hai
+hh
+
+Example:-
+---------
+//FILE-A//
+public interface Unit 
+{
+	public String show(String word);
+	public int print(int num);
+}
+
+//FILE-B//
+public class Sample implements Unit
+{
+	public String show(String word)
+	{
+		return word;
+		
+	}
+	public int print(int num)
+	{
+		return num;
+	}
+	public int display(int value)
+	{
+		return value;
+	}
+	
+}
+
+//FILE-C//
+public class demo extends Sample 
+{
+	public int display(int value)
+	{
+		System.out.println("Absorbed value");
+		return value;
+	}
+    public static void main(String[] args)
+	{
+		demo objx = new demo();
+		System.out.println(objx.print(10));
+		System.out.println(objx.show("Iam"));
+		System.out.println(objx.display(33));
+	}
+}
+OUTPUT>>
+--------
+10
+Iam
+Absorbed value
+33
+
+
+
+
+
+
+                                                                           ABSTRACT CLASS
+																		   ==============
+-A class which is declared as abstract is known as an abstract class.
+-It can have abstract and non-abstract methods. 
+-It needs to be extended and its method implemented.
+-Can't create Object of  an abstract class as all methods are abstract no logic found to execute
+-In this Abstract class 2 keywords are must 
+	     1.'abstract' keyword
+		 2.'extends' keyword
+		 
+Example:-
+---------
+      abstract class  SBI                                       //File 'A'
+	  {
+	       abstract void withdraw();
+	       void miniStatement()
+	       {
+		      System.out.println("Printing ministatements");
+	   	   }
+	  }
+	  
+	  
+	  class Canara extends SBI                                   //File 'B'
+	  {
+		void withdraw()
+		{
+			System.out.println("Withdrawing cash");
+			
+		}
+		
+		public static void main(String args[])
+		{
+			Canara obj = new Canara();
+			obj.miniStatement();
+			obj.withdraw();
+		}
+	  }
+	  
+OUTPUT>>
+--------
+Printing ministatements
+Withdrawing cash
+
+
+																
+
+	

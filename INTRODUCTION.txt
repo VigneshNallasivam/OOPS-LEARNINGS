@@ -1,0 +1,127 @@
+                                                        OOPS INTRODUCTION
+														=================
+
+//INTRODUCTION
+          1.What is OOPS?
+		  2.What is Class?
+		  3.What is ObjectS? 
+		  
+		                                               1) WHAT IS OOPS..?
+													   ------------------
+=>OOPS - OOPS Stands for "OBJECT ORIENTED PROGRAMMING AND DATA STRUCTURES" is a computer programming model that uses objects in programming primarily 
+         along with functions and logic  
+		 
+=>USES OF OOPS:-
+- Object Oriented Programming is designed Primarily for Languages like Java,C++ & Python, Other than these languages,
+  OOP also Pairs with languages like PHP,javaScript,.NET ,c#etc..,
+- Simula is credited as being the first object-oriented programming language.
+- But some programming languages pair with OOP better than others. 
+  For example, programming languages considered pure OOP languages treat everything as objects.
+- Pure OOP Languages are : Ruby, Scala, JADE, Emerald
+- Main Uses Of OOPS includes following:-
+             #OOP provides a clear structure & Readability for the programs.
+			 #Makes the code easier to maintain, modify and debug.
+			 #Gives Security by using Encapsulation & Abstraction.
+			 #Gives flexibility by using polymorphism.
+			 #Gives Code Re-usability through Inheritence & Genrics.
+			 #Handles multiple data type through created objects.
+         
+=>STRUCTURE OF OBJECT ORIENTED PROGRAMMING:-  
+                                      ______________________________________________________
+			                          CLASS--->>METHODS/FUNCTIONS--->>OBJECTS--->>ATTRIBUTES
+									  ______________________________________________________
+									  
+									  
+=>FOUR PILLARS OF OBJECT ORIENTED PROGRAMMING:-	(AEIP)								  
+									___________________         
+                                      ||Abstraction
+                                      ||Encapsulation
+                                      ||Inheritence
+                                      ||Polymorphism	
+                                    ___________________	 
+                            
+                                                      2) WHAT IS CLASS..?
+                                                      -------------------
+=>CLASS - A class is a template, defining of the methods and variables in a particular kind of object.
+          A class is a blueprint that defines the variables and the methods common to all objects of a certain kind. 
+          A class is a user-defined Lay-out/Proto-type for created objects.	
+		  A class is a Root Word Ex:CAR is a root word and its types like BMW,Ferrari,Mercedes etc.., are its branch functions.
+=>SYNTAX:-
+=========
+       -Classname must always starts with Capital-letter (Snake-Case) Eg:- Class HaiWorld (Where HaiWorld is a Class Name, H and W are capital letters)
+        class <class_name>
+		 {  
+           field;  
+           method;  
+         }		  
+=>TYPES OF CLASS:-
+=================
+    1.Public-A public item is one that is accessible from any other class. You just have to know what object it is and you can use a dot operator to access it.
+	2.Protected-A Protected means that a class and its subclasses have access to the variable, but not any other classes.
+	3.Private-A private means that only that class has direct access to the variable, everything else needs a method/function to access or change that data.
+	__________________________________________
+	private - least access, best encapsulation
+    protected - some access, moderate encapsulation
+    public - full access, no encapsulation
+	_________________________________________
+	
+=> EXAMPLE OF CLASS:-
+=====================
+      public class Addition
+	  {
+	  public int sum(int num1,int num2)
+	  {
+	  return num1+num2;
+	  }
+	  public static void main(String[] args)
+	  {
+	  Addition objx = new Addition();
+	  objx.sum(10,20);
+	  }
+	  }
+	  
+	                                                     WHAT IS OBJECT..?
+														 =================
+OBJECT=>Any Realtime Entity that has its Own States/properties(Variables) & behaviour/actions (Methods)		
+        - objects are the things
+        - Also the units of code
+SYNTAX=> 
+========
+        'new' is the keyword of creating object
+		CREATING AN OBJECT
+		ClassName RefVariable = new ClassName();
+EXAMPLE:-
+========
+      public class Addition
+	  {
+	  public int sum()
+	  {
+	  int num1=5;
+	  int num2=7;
+	  return num1+num2;
+	  }
+	  public static void main(string[] args)
+	  {
+	  Addition obj = new Addition();                      //'obj' is the RefVariable created
+	  System.out.println("The Sum Is : " + obj.sum());    //calling the sum() method using .operator
+	  }
+	  }
+		 
+      OUTPUT >>
+	  The Sum Is : 12
+		 
+		 
+		 
+ 
+ 
+		 
+		 
+        
+
+	  
+		
+		 
+		 
+		
+		 
+	

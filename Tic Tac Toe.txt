@@ -1,0 +1,156 @@
+import java.util.Random;
+import java.util.Scanner;
+public class TicTacToe 
+{
+	char[] cell = new char[10];
+	char player,computer;
+	int yourLocation;
+	int computerLocation;
+	Scanner scanner = new Scanner(System.in);
+	Random random = new Random();
+	/*
+	 * Printing Board
+	 */
+	public void printBoard()
+	{
+		for (int i = 1; i < 10; i++) 
+        {
+            cell[i] = ' ';
+        }
+		System.out.println("*****TIC-TAC-TOE*****");
+		System.out.println();
+		System.out.println(">>>>Game Starts<<<<");
+		System.out.println();
+		System.out.println(cell[1] + " | " + cell[2] + " | " + cell[3]);
+        System.out.println("---------");
+        System.out.println(cell[4] + " | " + cell[5] + " | " + cell[6]);
+        System.out.println("---------");
+        System.out.println(cell[7] + " | " + cell[8] + " | " + cell[9]);
+		
+	}
+	
+	public void showBoard()
+	{
+		System.out.println(cell[1] + " | " + cell[2] + " | " + cell[3]);
+        System.out.println("---------");
+        System.out.println(cell[4] + " | " + cell[5] + " | " + cell[6]);
+        System.out.println("---------");
+        System.out.println(cell[7] + " | " + cell[8] + " | " + cell[9]);
+		
+	}
+	
+	public void chooseCharacter()
+	{
+		System.out.println("Please Select Your Choice : 'X' or 'Y' ");
+        char choice = scanner.next().toUpperCase().charAt(0);
+        if (choice == 'X')
+        {
+            player = 'X';
+            computer = 'O';
+            System.out.println("The Player Gets : "+player);
+            System.out.println("The Computer Gets : "+computer);
+        } 
+        else if (choice == 'Y') 
+        {
+            player = 'O';
+            computer = 'X';
+            System.out.println("The Player Gets : "+player);
+            System.out.println("The Computer Gets : "+computer);
+        }
+        
+	}
+	
+	public void playersTurn()
+	{
+		System.out.println("Select Your Location From 1-9 to Make A Move");
+        yourLocation = scanner.nextInt();
+        if (yourLocation > 0 && yourLocation < 10)
+        {
+            cell[yourLocation] = player;
+            showBoard();
+        } 
+        else
+        {
+            System.out.println("Invalid Choice");
+        }
+	}
+	
+	public void checkFreeSpace()
+	{
+		if (cell[yourLocation] == ' ')
+		{
+			showBoard();
+			playersTurn();
+		}
+        else
+        {
+	       return;
+        }
+        
+	}
+	
+	public void checkToss()
+	{
+		int tossResult = random.nextInt(2)+1;
+		System.out.println("TYPE '1' For HEADS || TYPE '2' For TAILS");
+		int coinSelect = scanner.nextInt();
+		if(tossResult==coinSelect)
+		{
+			System.out.println("!! Player Starts");
+			showBoard();
+			playersTurn();
+		}
+		else
+		{
+			System.out.println("!! Computer Starts");
+			showBoard();
+		    computersTurn();
+		}
+		
+	}
+	
+	public void gameResult()
+	{
+		System.out.println("//R::E::S::U::L::T//");
+		boolean chance1 = (cell[1] == player && cell[2] == player && cell[3] == player);//
+		boolean chance2 = (cell[4] == player && cell[5] == player && cell[6] == player);
+		boolean chance3 = (cell[7] == player && cell[8] == player && cell[9] == player);
+		boolean chance4 = (cell[1] == player && cell[4] == player && cell[7] == player);
+		boolean chance5 = (cell[2] == player && cell[5] == player && cell[8] == player);
+		boolean chance6 = (cell[3] == player && cell[6] == player && cell[9] == player);
+		boolean chance7 = (cell[1] == player && cell[5] == player && cell[9] == player);
+		boolean chance8 = (cell[3] == player && cell[5] == player && cell[7] == player);
+		if(chance1 ||chance2 ||chance3 ||chance4 ||chance5 ||chance6 ||chance7 ||chance8 == true)
+			System.out.println("Hurray..! Player Wins Game");
+		else if(cell[1]!=' ' && cell[2]!=' ' && cell[3]!=' ' && cell[4]!=' ' && cell[5]!=' ' && cell[6]!=' ' && cell[7]!=' ' && cell[8]!=' ' ==true)
+			System.out.println("Game Is Tie");
+		else
+			System.out.println("Oops..! Computer Wins Game");
+			
+	}
+	
+	public void computersTurn()
+	{
+		
+		System.out.println("Computer Selecting Its Location");
+		//computerLocation = (int)Math.floor(Math.random()*10)%9+1;
+		computerLocation = random.nextInt(9)+1;
+		cell[computerLocation]=computer;
+		System.out.println("Computer Takes Location : "+computerLocation);
+		showBoard();
+	}
+	
+	public static void main(String[] args)
+	{
+		TicTacToe obj = new TicTacToe();
+		obj.printBoard();
+		obj.chooseCharacter();
+		obj.checkToss();
+		obj.checkFreeSpace();
+		obj.playersTurn();
+		obj.computersTurn();
+		obj.playersTurn();
+		obj.computersTurn();
+		obj.gameResult();
+	}
+}

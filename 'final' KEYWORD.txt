@@ -1,0 +1,99 @@
+//'final' KEYWORD
+          1.'final' VARIABLE
+          2.'final' METHOD
+          3.'final' CLASS
+		  
+		                                                              'final' KEYWORD
+																	  ===============
+-The 'final' keyword in java is used to restrict the user
+-'final' keyword makes them non-changeable (impossible to inherit or override)
+-The final keyword is useful when you want a variable to always store the same value
+-The final keyword is called a "modifier".
+-Using the final keyword means that the value can't be modified in the future.
+-Classes marked as final can't be extended i.e cannot be inherited
+-A final variable that is not initialized at the time of declaration is known as blank final variable.It can be initialized only in constructor.
+-final method is inherited but you cannot override it
+-If you make any class as final, you cannot extend it.
+-Final can be:
+         variable =>Final Variable
+          method  =>Final Method (can be inherited but cannot override it)
+           class  =>Final Class (cannot be inherited)
+		   
+		                                                             1.'final' VARIABLE
+																	 ==================
+
+Example:-
+--------
+class Bike
+{  
+  final int speedlimit=90;                            //final variable  
+  void run()
+  {  
+    speedlimit=400;  
+  } 
+  
+ public static void main(String args[])
+ {  
+ Bike obj=new  Bike();  
+ obj.run();  
+ }  
+}
+
+OUTPUT >>
+Compile Time Error
+
+
+                                                                          2.'final' METHOD
+																		  ================
+Example:-
+---------
+class System
+{  
+  final void run()                             //final Method
+  {
+   System.out.println("running.....");
+  }  
+}  
+     
+class Computer extends Bike
+{  
+   void run()
+   {
+    System.out.println("running 0.5mbps");
+   }  
+     
+   public static void main(String args[])
+   {  
+   Computer obj = new Computer();  
+   obj.run();  
+   }  
+} 
+ 
+OUTPUT >>
+Compile Time Error
+
+                                                                         3.'final' CLASS
+																		 ===============
+Example:-
+--------
+final class Yamaha                                      //final Class
+{
+
+}  
+  
+class Honda extends Yamaha
+{  
+  void run()
+  {
+  System.out.println("running safely with 100kmph");
+  }  
+    
+  public static void main(String args[])
+  {  
+  Honda obj= new Honda();  
+  obj.run();  
+  }  
+}  
+
+OUTPUT>>
+Compile Time Error

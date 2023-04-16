@@ -1,0 +1,30 @@
+                                                                 OOPS LEARNINGS
+																 ==============
+												(OBJECT ORIENTED PROGRAMMING AND DATA STRUCTURES)
+//INTRODUCTION
+          1.What is OOPS?
+          2.What is Class?
+          3.What is Objects?
+//CONSTRUCTOR
+//STATIC AND NON STATIC VARIABLES & METHODS
+//INHERITANCE
+//POLYMORPHISM
+//ENCAPSULATION
+//ABSTRACTION
+//RECURSION
+//ACCESS SPECIFIERS
+//FOR-EACH LOOP
+//'FINAL' KEYWORD
+          1.'FINAL' METHOD
+          2.'FINAL' CLASS
+//COLLECTIONS
+          1.ARRAY LIST
+          2.HASH MAP
+//GENRICS
+//DATA STRUCTURES APPEARENCE
+//DATA STRUCTURES
+          1.LINKED LIST
+          2.STACK
+          3.QUEUE
+          4.HASH-TABLE
+          5.BINARY SEARCH TREE

@@ -1,0 +1,9 @@
+//DATA STRUCTURES 4).Hash-Table
+
+
+
+                                                  
+												        HASH TABLE
+														==========
+										 (Maps keys to Values i.e.., with K,V Pair)
+											   

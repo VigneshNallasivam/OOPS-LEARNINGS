@@ -1,0 +1,87 @@
+//BINARY SEARCH TREE
+
+public class BinarySearchTree 
+{
+	class Node
+	{
+		int data;
+		Node left;
+		Node right;
+		Node(int data)
+		{
+			this.data = data;
+		}
+		
+	}
+	Node root;
+	BinarySearchTree()
+	{
+		root = null;
+	}
+	void insert(int data)
+	{
+		root=insertRec(root,data);
+	}
+	Node insertRec(Node root,int data)
+	{
+		if(root==null)
+		{
+			root = new Node(data);
+			return root;
+		}
+		else if(data<root.data)
+			root.left=insertRec(root.left,data);
+		else
+			root.right = insertRec(root.right,data);
+		return root;
+	}
+	void order()
+	{
+		orderRec(root);
+	}
+	void orderRec(Node root)
+	{
+		if(root == null)
+			return;
+		orderRec(root.left);
+		System.out.print(root.data+" ");
+		orderRec(root.right);
+	}
+	public boolean search(Node root,int input)
+	{
+		if(root == null)
+		{
+			return false;
+		}
+		if(root.data == input)
+		{
+			return true;
+		}
+		boolean result1 = search(root.left,input);
+		if(result1==true)
+			return true;
+		boolean result2 = search(root.right,input);
+		return result2;
+				
+	}
+	public static void main(String[] args)
+	{
+		BinarySearchTree objx = new BinarySearchTree();
+		objx.insert(56);
+		objx.order();
+		System.out.println();
+		objx.insert(20);
+		objx.order();
+		System.out.println();
+		objx.insert(10);
+		objx.order();
+		System.out.println();
+		if(objx.search(objx.root,10)==true)
+			System.out.println("It is Present");
+		else
+			System.out.println("It is not present");
+			
+	}
+	
+
+}

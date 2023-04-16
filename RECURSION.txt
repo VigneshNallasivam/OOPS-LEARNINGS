@@ -1,0 +1,113 @@
+//RECURSION
+                                                                           RECURSION
+																		   =========
+-Recursion is the technique of making a function calls itself continuosly/Repitatively until satisfies
+
+Example:-
+--------
+     public class Sample
+	 {
+     static int sum(int num)                              //1+2+3+4+5+6+7+8+9+10
+     {
+        if(num > 0)                                       //10>0
+        return num + sum(num - 1);                        //10+sum(9) //10+45 //55
+        else
+        return 0;
+     }
+   
+    public static void main(String[] args) {
+
+        int result = sum(10);
+        System.out.println("Result: "+result);
+   
+    }
+	}
+
+OUTPUT >>
+----------
+Result: 55
+
+Example:-
+---------
+public class InfiniteCalls
+{
+	static void print()
+	{  
+		System.out.println("hello");  
+		print();  
+	}  
+		  
+	public static void main(String[] args)
+	{  
+	  print();  
+	}  
+}
+
+OUTPUT >>
+---------
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+at recursion.InfiniteCalls.print(InfiniteCalls.java:33)
+at recursion.InfiniteCalls.print(InfiniteCalls.java:33)
+at recursion.InfiniteCalls.print(InfiniteCalls.java:33)
+at recursion.InfiniteCalls.print(InfiniteCalls.java:33)
+at recursion.InfiniteCalls.print(InfiniteCalls.java:33)
+at recursion.InfiniteCalls.print(InfiniteCalls.java:33)
+at recursion.InfiniteCalls.print(InfiniteCalls.java:33)
+at recursion.InfiniteCalls.print(InfiniteCalls.java:33)
+at recursion.InfiniteCalls.print(InfiniteCalls.java:33)
+at recursion.InfiniteCalls.print(InfiniteCalls.java:33)
+
+Example:-
+-------- 
+    public class Factorial                           //5!=5*4*3*2*1=120
+	{  
+        static int fact(int n)
+		{      
+              if (n == 1)      
+                return 1;      
+              else      
+                return(n * fact(n-1)); // 5*4*3*2*1 //120         
+				                            
+        }      
+      
+       public static void main(String[] args) 
+	   {  
+       System.out.println("Factorial of 5 is: " +fact(5));  
+       }  
+    }  
+	
+OUTPUT >>
+---------
+Factorial of 5 is: 120
+
+Example:-
+--------
+class Fibonacci 
+{
+static int fibo(int n) //10
+{
+if (n <= 1) //0 //1  //1
+  return n;
+else
+   return fib(n - 1) + fib(n - 2);
+}
+public static void main(String args[])
+{
+   int n = 10;
+   System.out.println(fibo(n));//10
+    
+}
+}
+
+
+	

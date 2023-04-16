@@ -1,0 +1,262 @@
+//DATA STRUCTURES 3).Queue
+
+
+
+                                                  
+												        QUEUE
+														=====
+											  (FIFO = First In First Out)
+											   (import java.util.Queue;)
+						
+- Queue is a type of data structure that comes under Linear Dynamic data structure
+
+Examples => PVC Pipe
+            Ticket Line
+            Escalator
+            Single-Lane/One Way Road			
+            
+Input    => EnQueue
+
+Output   => DeQueue
+
+Entries  => Front / Rear
+
+Diagram  =>  
+
+                  	 __________________
+              FRONT --->CC | BB |AA----> REAR 
+                     __________________  
+
+
+CREATING A QUEUE :-
+===================
+         Queue<data-type> que = new LinkedList<data-type>();
+		
+FUNCTIONS OF Queue :-
+====================
+#add() : Adds elements to the queue at the end (tail) of the queue
+                     (OR)
+#offer() : Insert the new element into the queue.
+
+#remove() : Removes the head (front) of the queue and returns it.
+                      (OR)
+#poll() : Same Operation as remove() ,but if the queue is empty, it returns null.
+
+#peek() : Returns the head (front) of the queue without removing it.
+                       (OR)
+#element() : Same Operation as peek(),but throws 'NoSuchElementException' if Queue is Empty
+
+#size() : Returns the size or number of elements in the queue.
+
+Example :-
+----------
+//IMPLEMENTING FUNCTIONS OF QUEUE IN CODING
+import java.util.Queue;
+import java.util.LinkedList;
+public class Sample
+{
+	public static void main(String[] args)
+	{
+		Queue<String> que = new LinkedList<String>();
+		System.out.print("Is Queue Empty : ");
+		System.out.println(que.poll());
+		que.offer("Puppy");
+		que.offer("Boy");
+		que.add("Mango");
+		que.add("She");
+		que.offer("HeyHay");
+		System.out.print("Elements in Queue Are : ");
+		System.out.println(que);
+		System.out.println("Size of the Queue is : "+que.size());
+		System.out.print("After Removing Head/Front : ");
+		que.remove();
+		System.out.println(que);
+		System.out.println("Element in Front Is : " +que.peek());
+	}
+}
+OUTPUT>>
+--------
+Is Queue Empty : null
+Elements in Queue Are : [Puppy, Boy, Mango, She, HeyHay]
+Size of the Queue is : 5
+After Removing Head/Front : [Boy, Mango, She, HeyHay]
+Element in Front Is : Boy
+
+
+Example:-
+---------
+//IMPLEMENTATION OF QUEUE WITH THE HELP OF LINKED LIST
+//File-A//
+public class LinkedList 
+{
+	Node head;
+	class Node
+	{
+		Object data;
+		Node ref;
+		Node(Object data)
+		{
+			this.data = data;
+		}
+	}
+	public void elements(Object data)         
+	{
+		Node newNode = new Node(data);
+		System.out.print(newNode.data+"->");  
+	}
+	public void addNodeFirst(Object data)     
+	{
+		Node newNode = new Node(data);
+		newNode.ref = head;
+		head = newNode;
+	}
+	public void addNodeLast(Object data)           
+	{
+		Node newNode = new Node(data);
+		if (head == null)
+			head = newNode;
+		else if (head.ref == null)
+			head.ref = newNode;
+		else 
+		{
+			Node temp = head;
+			while (temp.ref != null)
+			{
+				temp = temp.ref;
+			}
+			temp.ref = newNode;
+		}
+	}
+	public void deleteNodeFirst()
+	{
+		head = head.ref;
+	}
+	public void deleteNodeLast()
+	{
+		if(head == null)
+			System.out.println("Linked List is Empty");
+		else if(head.ref == null)
+			head = null;
+		else
+		{
+			Node temp = head;
+			while(temp.ref.ref != null)
+			{
+				temp = temp.ref;
+			}
+			temp.ref = null;
+		}
+	}
+	public void addNodeIntermediate(Object data, int position)
+	{
+		int index = 0;
+		Node newNode = new Node(data);
+		Node left = head;
+		Node right = left.ref;
+		while(index < (position-1))
+		{
+
+			left = left.ref;
+			right = right.ref;
+			index++;
+		}
+		newNode.ref = right;
+		left.ref = newNode;
+	}
+	public void addNodeSpecific(Object afterElement,Object newElement)
+	{
+		Node newNode = new Node(newElement);
+		Node temp = head;
+
+		int index = 0;
+		while(temp.data != afterElement)
+		{
+			index++;
+			temp = temp.ref;
+		}
+		Node left = head;
+		Node right = left.ref;
+		int index1 =0;
+		while(index1 < index)
+		{
+			index1++;
+			left = left.ref;
+			right = right.ref;
+		}
+		newNode.ref = right;
+		left.ref = newNode;
+	}
+		public void deleteNodeSpecific(Object data) 
+		{
+			int index = 0;
+			Node left = head;
+			Node right = left.ref;
+			while (right.data != data) 
+			{
+				left = left.ref;
+				right = right.ref;
+				index++;
+			}
+			left.ref = right.ref;
+
+		}
+		public Object searchNode(Object input) 
+		{
+			Node temp = head;
+			int index = 0;
+			while (temp != null) 
+			{
+				index++;
+				if (temp.data == input) 
+				{
+					String res = temp.data + " found at index " + index;
+					return res;
+				}
+				temp = temp.ref;
+			}
+			return null;
+		}
+		public void display()
+		{
+			Node temp = head;
+			while(temp != null)
+			{
+				if(temp.ref != null)
+					System.out.print(temp.data+" -> ");
+				else
+					System.out.println(temp.data);
+				temp = temp.ref;
+			}
+
+		}
+
+//File-B//
+import java.util.Queue;
+public class Newer 
+{
+	LinkedList list = new LinkedList();
+	public void enqueue(Object data)
+	{
+		list.addNodeLast(data);
+		list.display();
+    }
+
+	public static void main(String[] args)
+	{
+		Newer obj = new Newer();
+		System.out.println("Elements in the Queue Are : ");
+		obj.enqueue("Aa");
+		obj.enqueue("Bb");
+		obj.enqueue("Cc");
+		obj.enqueue("Dd");
+		obj.enqueue("Ee");
+	}
+}
+OUTPUT>>
+--------
+Elements in the Queue Are : 
+Aa
+Aa -> Bb
+Aa -> Bb -> Cc
+Aa -> Bb -> Cc -> Dd
+Aa -> Bb -> Cc -> Dd -> Ee

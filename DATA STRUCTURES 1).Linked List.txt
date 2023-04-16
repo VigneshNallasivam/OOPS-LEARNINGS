@@ -1,0 +1,349 @@
+//DATA STRUCTURES
+1.LINKED LIST
+2.STACK
+3.QUEUE
+4.BINARY SEARCH TREE (BST)
+5.HASH TABLE
+
+                                                            DATA STRUCTURES
+															===============
+-A data structure is a storage that is used to store and organize data. 
+-It is a way of arranging data on a computer so that it can be accessed and updated efficiently.
+
+CLASSIFICATION
+==============
+                                                   ____________________________
+										           DATA STRUCTURES
+												   ----------------------------
+												   1.Linear Data Structure
+												   2.Non-Linear Data Structure
+												   ____________________________
+						__________________________						         ________________________________
+						LINEAR DATA STRUCTURE						             NON-LINEAR DATA STRUCTURE
+						--------------------------						         --------------------------------
+						1.Static Data Structure                                   1.Tree
+                        2.Dyanmic Data Structure						          2.Graph
+						__________________________						         ________________________________
+												   
+	_______________________                    ________________________
+	STATIC DATA STRUCTURE                       DYNAMIC DATA STRUCTURE
+	-----------------------					   ------------------------						   
+	1.Array										1.Linked List	   
+	_______________________						2.Stack					   
+												3.Queue   
+												________________________   
+												
+												
+												
+________________________________________________________________________________________________________________________________________________
+												
+												
+												1.LINKED LIST
+												=============
+          - Linked Means the 'data along with address/reference of next'(consider NODE-A) is linked to 
+            next 'data along with address/reference of next'(Consider NODE-B)
+												  
+								[A | ref of B]==>[B | ref of next DATA/NULL]      //Here, A & B are Data's
+								                                                          ref of B is Address.
+																						  
+DIAGRAM:-
+--------
+    HEAD==>[A|ref.B]==>[B|ref.C]==>[C|ref.D]==>[D|ref.E]==>[E|ref.F]==>[F|ref.G]==>[G|ref.H]==>[H|ref.NULL]
+	NODE = [Data | Address of Next Data]
+	
+TYPES OF LINKED LISTS:-
+-----------------------
+    ->Singly linked lists.
+    ->Doubly linked lists.
+    ->Circular linked lists.
+    ->Circular doubly linked lists.
+	
+
+INGREDIENTS OF A LINKED LIST FOR JAVA CODE MAKING :-
+----------------------------------------------------
+   ->public class <Classname>{//Inside this following ingredients must be added}
+   ->Node head;                    //default node though there is no node/1st node
+   ->class Node                    //In the node there will be data and node reference. so,it must be declared
+     {
+	  object data;
+	  Node ref;
+	  Node(object data)            //Parameterized Constructor for getting data of object type in an node
+	  {
+	   this.data=data;
+	  }
+   ->Intermediate Methods/Functions Like ..
+       1. createNodes(){}
+	   2. addNodeFirst(){}
+	   3. addNodeLast(){}
+	   4. deleteNodeFirst(){}
+	   5. deleteNodeLast(){}
+	   6. deleteNodeSpecific(){}
+	   6. addNodeIntermediate(){}
+	   7. searchNode(){} / traverseNode(){}/findNode(){}
+       8. ascendNode(){} & descendNode(){}
+	   9. addNodeSpecific(){}
+   ->The funtions/methods must use if-elseif-else Loop & While Loop
+   ->Create "temp" node additionally to do functional operations
+   ->Use Scanners wherever needed   //import java.util.Scanner;
+   ->Main Functions
+     public static void main(String[] args)
+	 {
+	    // Create Object 'obj'
+        // use 'obj' Object to call functions/methods		
+		// use 'obj' Object to print & show in OUTPUT console
+	 }
+	 
+FUNCTIONS/METHODS :-
+---------------------
+public class LinkedList 
+{
+	Node head;
+	class Node
+	{
+		Object data;
+		Node ref;
+		Node(Object data)
+		{
+			this.data = data;
+		}
+	}
+
+
+	/*
+	 * Function for Creating Linked List
+	 */
+	public void elements(Object data)         
+	{
+		Node newNode = new Node(data);
+		System.out.print(newNode.data+"->");  
+	}
+
+
+
+
+	/*
+	 * Function for Creating Node at First Position
+	 */
+	public void addNodeFirst(Object data)     
+	{
+		Node newNode = new Node(data);
+		newNode.ref = head;
+		head = newNode;
+	}
+
+
+
+	/*
+	 * Funtion for creating Node At Last Position
+	 */
+	public void addNodeLast(Object data)           
+	{
+		Node newNode = new Node(data);
+		if (head == null)
+			head = newNode;
+		else if (head.ref == null)
+			head.ref = newNode;
+		else 
+		{
+			Node temp = head;
+			while (temp.ref != null)
+			{
+				temp = temp.ref;
+			}
+			temp.ref = newNode;
+		}
+	}
+
+
+
+	/*
+	 * Fuction for Deleting Node At 1st Position
+	 */
+	public void deleteNodeFirst()
+	{
+		head = head.ref;
+	}
+
+
+	/*
+	 * Fuction for Deleting Node At Last Position
+	 */
+	public void deleteNodeLast()
+	{
+		if(head == null)
+			System.out.println("Linked List is Empty");
+		else if(head.ref == null)
+			head = null;
+		else
+		{
+			Node temp = head;
+			while(temp.ref.ref != null)
+			{
+				temp = temp.ref;
+			}
+			temp.ref = null;
+		}
+	}
+
+
+	/*
+	 * Function for Adding Node At Intermediate position
+	 */
+	public void addNodeIntermediate(Object data, int position)
+	{
+		int index = 0;
+		Node newNode = new Node(data);
+		Node left = head;
+		Node right = left.ref;
+		while(index < (position-1))
+		{
+
+			left = left.ref;
+			right = right.ref;
+			index++;
+		}
+		newNode.ref = right;
+		left.ref = newNode;
+	}
+
+
+
+	/*
+	 * Function for Adding Node At Specific position
+	 */
+	public void addNodeSpecific(Object afterElement,Object newElement)
+	{
+		Node newNode = new Node(newElement);
+		Node temp = head;
+
+		int index = 0;
+		while(temp.data != afterElement)
+		{
+			index++;
+			temp = temp.ref;
+		}
+		Node left = head;
+		Node right = left.ref;
+		int index1 =0;
+		while(index1 < index)
+		{
+			index1++;
+			left = left.ref;
+			right = right.ref;
+		}
+		newNode.ref = right;
+		left.ref = newNode;
+	}
+
+
+
+
+
+		/*
+		 * Function for Deleting Node At Specific Position
+		 */
+		public void deleteNodeSpecific(Object data) 
+		{
+			int index = 0;
+			Node left = head;
+			Node right = left.ref;
+			while (right.data != data) 
+			{
+				left = left.ref;
+				right = right.ref;
+				index++;
+			}
+			left.ref = right.ref;
+
+		}
+
+
+
+		/*
+		 * Function for Searching/Finding/Traversing Node At Positions
+		 */
+		public Object searchNode(Object input) 
+		{
+			Node temp = head;
+			int index = 0;
+			while (temp != null) 
+			{
+				index++;
+				if (temp.data == input) 
+				{
+					String res = temp.data + " found at index " + index;
+					return res;
+				}
+				temp = temp.ref;
+			}
+			return null;
+		}
+
+
+
+
+
+
+		/*
+		 * Function for Displaying Current functions Performed
+		 */
+		public void display()
+		{
+			Node temp = head;
+			while(temp != null)
+			{
+				if(temp.ref != null)
+					System.out.print(temp.data+" -> ");
+				else
+					System.out.println(temp.data);
+				temp = temp.ref;
+			}
+
+		}
+
+
+
+		public static void main(String[] args)
+		{
+			LinkedList obj = new LinkedList();
+			obj.addNodeFirst(5);
+			obj.display();
+			obj.addNodeFirst(10);
+			obj.display();
+			obj.addNodeLast(20);
+			obj.display();
+			obj.addNodeLast(30);
+			obj.display();
+			System.out.println(obj.searchNode(10));
+			obj.display();
+			obj.addNodeIntermediate(66,2);
+			obj.display();
+			obj.deleteNodeSpecific(66);
+			obj.display();
+			obj.deleteNodeFirst();
+			obj.display();
+			obj.deleteNodeLast();
+			obj.display();
+			obj.addNodeSpecific(20,56);
+			obj.display();
+			obj.deleteNodeLast();
+			obj.display();
+		}
+	
+}
+OUTPUT>>
+--------
+5
+10 -> 5
+10 -> 5 -> 20
+10 -> 5 -> 20 -> 30
+10 found at index 1
+10 -> 5 -> 20 -> 30
+10 -> 5 -> 66 -> 20 -> 30
+10 -> 5 -> 20 -> 30
+5 -> 20 -> 30
+5 -> 20
+5 -> 20 -> 56
+5 -> 20
+
+

@@ -1,0 +1,192 @@
+//GENRICS
+
+                                                                          GENRICS //<>
+																		  =======
+-Used to reuse the code multiple times with different types of Data.
+-Based on the types of the arguments passed to the generic method, the compiler handles each method call appropriately.
+-SYNTAX:-
+        BaseType<Type> obj = new BaseType <Type>();
+
+Example:-
+---------
+class Test<T>                     //Single Genrics of type 'T' 
+{
+    T num1;        
+    Test(T num1)                 //Constructor
+	{ 
+	this.num1= num1; 
+	} 
+	
+    public T getObject() 
+	{ 
+	return this.num1; 
+	}
+}
+  
+
+class Main 
+{
+    public static void main(String[] args)
+    {
+        Test<Integer> Objx = new Test<Integer>(15);              //Genrics of type Integer//Syntax
+        System.out.println(Objx.getObject());
+  
+
+        Test<String> Objy = new Test<String>("GeeksForGeeks");    //Genrics of type String//Syntax 
+        System.out.println(Objy.getObject());
+    }
+}
+
+OUTPUT >> 
+15
+GeeksForGeeks
+
+Example:-
+---------    
+class Test<T, U>                                                             //Multiple Genrics of type 'T' & 'U'
+{
+    T str1;  
+    U num1;  
+    Test(T str1, U num1)
+    {
+        this.str1 = str1;
+        this.num1 = num1;
+    }
+  
+    
+    public void print()
+    {
+        System.out.println(str1);
+        System.out.println(num1);
+    }
+}
+class Main
+{
+    public static void main (String[] args)
+    {
+        Test <String, Integer> obj =new Test<String, Integer>("GfG", 15);
+        obj.print();
+    }
+}
+
+OUTPUT >>
+GfG
+15
+
+Example:-
+---------
+public class GenericClass1<T> 
+{
+   T num1;
+
+   public void setValue(T num1) 
+   {
+       this.num1 = num1;
+   }
+
+   public T getValue()
+   {
+       return this.num1;
+   }
+
+   public static void main(String[] args) 
+   {
+       GenericClass1<Integer> gC1 = new GenericClass1<Integer>();
+       gC1.setValue(10);
+       System.out.println(gC1.getValue());
+       
+       GenericClass1<Double> gC2 = new GenericClass1<Double>();
+       gC2.setValue(10.67);
+       System.out.println(gC2.getValue());
+       
+       
+       GenericClass1<String> gC3 = new GenericClass1<String>();
+       gC3.setValue("Bridgelabz");
+       System.out.println(gC3.getValue());
+
+
+   }
+
+}
+
+OUTPUT >>
+10
+10.67
+Bridgelabz
+
+
+
+Example:-
+---------
+//USING ARRAY IN GENRICS
+public class Animal<D>
+{
+	D array[];
+	Animal()
+	{
+		this.array=array;
+	}
+
+	public void getArray(D array[])
+	{
+		for(int i =0;i<array.length;i++)
+		{
+			System.out.println(array[i]);
+
+		}
+
+	}
+	
+	public static void main(String[] args)
+	{
+		Animal<String> objx = new Animal<String>();
+		String array[]= {"Sza","Rihanna","hai","Hello"};
+		objx.getArray(array);
+	}
+}
+OUTPUT>>
+--------
+Sza
+Rihanna
+hai
+Hello
+
+Example:-
+---------
+public class Sample<T,U> 
+{
+	T num;
+	U str;
+	Sample()
+	{
+		this.num = num;
+		this.str = str;
+	}
+	public T sum(int num)
+	{
+		System.out.println(num);
+		return this.num;
+		
+	}
+	public U print(String str)
+	{
+		System.out.println(str);
+		return this.str;
+	}
+	public static void main(String[] args)
+	{
+		Sample<Integer,String> objx = new Sample<Integer,String>();
+		objx.sum(10);
+		objx.print("Hai");
+	}
+}
+OUTPUT>>
+--------
+10
+Hai
+
+
+
+
+
+

@@ -1,0 +1,272 @@
+//DATA STRUCTURES 2).Stack
+
+
+
+                                                  
+												        STACK
+														=====
+											  (LIFO = Last In First Out)
+											   (import java.util.Stack;)
+						
+- Stack is a type of data structure that comes under Linear Dynamic data structure
+
+Examples => Chair Arrangement 
+            Cloth Bin 
+			Book Arrangement
+			Dinner Plates
+			
+Input    => PUSH
+
+Output   => POP
+
+Entries  => Bottom / Top
+
+Diagram  =>  
+
+              N means Stack is in Overflow
+      TOP   |CC| N-1 means Stack is Full
+            ----
+            |BB| 1 means Stack has 2 Elements
+            ----
+   BOTTOM   |AA| 0 means Stack has Only One Element
+            ====  
+			 -1 means Stack is Empty
+
+CREATING A STACK :-
+===================
+         Stack<data-type> stck = new Stack<>();
+		             (or)
+		    Stack stck = new Stack();
+		
+FUNCTIONS OF STACK :-
+====================
+#empty()/isEmpty() : The method checks the stack is empty or not & Returns boolean Value True/False.
+#push() : The method pushes (insert) an element onto the top of the stack.
+#pop() : The method removes an element from the top of the stack and returns the same element as the value of that function.
+#peek() : The method looks at the top element of the stack without removing it.
+#search() : The method searches the specified object and returns the position of the object.
+#size() : The method Gives the Size of Stack.
+
+Example :-
+----------
+//IMPLEMENTING FUNCTIONS OF STACK IN CODING
+import java.util.Stack;
+public class Sample
+{
+	public static void main(String[] args)
+	{
+	Stack<Integer> stck = new Stack<>();
+	boolean resultA = stck.empty();
+	System.out.println("Is Stack Empty : " +resultA);
+	System.out.print("The Elements In the Stack Are.. :-");
+	stck.push(10);
+	stck.push(20);
+	stck.push(30);
+	System.out.println(stck);
+	boolean resultB= stck.empty();
+	System.out.println("Is Stack Empty : " +resultB);
+	System.out.print("Size of the Stack Is : ");
+	System.out.println(stck.size());
+	stck.pop();
+	System.out.print("Removing Top Element In Stack : ");
+	System.out.println(stck);
+	System.out.print("What is the Top Element of Stack..? ");
+	System.out.println(stck.peek());
+	System.out.print("The Location of Element 10 in A Stack Is :");
+	System.out.println(stck.search(10));
+	}
+}
+OUTPUT>>
+---------
+Is Stack Empty : true
+The Elements In the Stack Are.. :-[10, 20, 30]
+Size of the Stack Is : 3
+Is Stack Empty : false
+Removing Top Element In Stack : [10, 20]
+What is the Top Element of Stack..? 20
+The Location of Element 10 in A Stack Is :2
+
+
+Example:-
+---------
+//IMPLEMENTATION OF STACK WITH THE HELP OF LINKED LIST
+//File-A//
+public class LinkedList 
+{
+	Node head;
+	class Node
+	{
+		Object data;
+		Node ref;
+		Node(Object data)
+		{
+			this.data = data;
+		}
+	}
+	public void elements(Object data)         
+	{
+		Node newNode = new Node(data);
+		System.out.print(newNode.data+"->");  
+	}
+	public void addNodeFirst(Object data)     
+	{
+		Node newNode = new Node(data);
+		newNode.ref = head;
+		head = newNode;
+	}
+	public void addNodeLast(Object data)           
+	{
+		Node newNode = new Node(data);
+		if (head == null)
+			head = newNode;
+		else if (head.ref == null)
+			head.ref = newNode;
+		else 
+		{
+			Node temp = head;
+			while (temp.ref != null)
+			{
+				temp = temp.ref;
+			}
+			temp.ref = newNode;
+		}
+	}
+	public void deleteNodeFirst()
+	{
+		head = head.ref;
+	}
+	public void deleteNodeLast()
+	{
+		if(head == null)
+			System.out.println("Linked List is Empty");
+		else if(head.ref == null)
+			head = null;
+		else
+		{
+			Node temp = head;
+			while(temp.ref.ref != null)
+			{
+				temp = temp.ref;
+			}
+			temp.ref = null;
+		}
+	}
+	public void addNodeIntermediate(Object data, int position)
+	{
+		int index = 0;
+		Node newNode = new Node(data);
+		Node left = head;
+		Node right = left.ref;
+		while(index < (position-1))
+		{
+
+			left = left.ref;
+			right = right.ref;
+			index++;
+		}
+		newNode.ref = right;
+		left.ref = newNode;
+	}
+	public void addNodeSpecific(Object afterElement,Object newElement)
+	{
+		Node newNode = new Node(newElement);
+		Node temp = head;
+
+		int index = 0;
+		while(temp.data != afterElement)
+		{
+			index++;
+			temp = temp.ref;
+		}
+		Node left = head;
+		Node right = left.ref;
+		int index1 =0;
+		while(index1 < index)
+		{
+			index1++;
+			left = left.ref;
+			right = right.ref;
+		}
+		newNode.ref = right;
+		left.ref = newNode;
+	}
+		public void deleteNodeSpecific(Object data) 
+		{
+			int index = 0;
+			Node left = head;
+			Node right = left.ref;
+			while (right.data != data) 
+			{
+				left = left.ref;
+				right = right.ref;
+				index++;
+			}
+			left.ref = right.ref;
+
+		}
+		public Object searchNode(Object input) 
+		{
+			Node temp = head;
+			int index = 0;
+			while (temp != null) 
+			{
+				index++;
+				if (temp.data == input) 
+				{
+					String res = temp.data + " found at index " + index;
+					return res;
+				}
+				temp = temp.ref;
+			}
+			return null;
+		}
+		public void display()
+		{
+			Node temp = head;
+			while(temp != null)
+			{
+				if(temp.ref != null)
+					System.out.print(temp.data+" -> ");
+				else
+					System.out.println(temp.data);
+				temp = temp.ref;
+			}
+
+		}
+
+//File-B//
+import java.util.Stack;
+public class Sample
+{
+	Stack stck = new Stack();
+	LinkedList list = new LinkedList();
+	public void pushElements(Object data)
+	{
+		if(stck.empty()== true )
+		{
+			list.addNodeLast(data);
+			list.display();
+		}
+		else
+			System.out.println("Stack Is Not Empty");
+	}
+	public static void main(String[] args)
+	{
+		Sample obj = new Sample();
+		System.out.println("Elements of the Stack Are : ");
+		obj.pushElements(10);
+		obj.pushElements(20);
+		obj.pushElements(30);
+		obj.pushElements(40);
+	}
+
+}
+OUTPUT>>
+--------
+Elements of the Stack Are : 
+10
+10 -> 20
+10 -> 20 -> 30
+10 -> 20 -> 30 -> 40
+
+ 

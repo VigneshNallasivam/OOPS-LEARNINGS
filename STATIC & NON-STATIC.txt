@@ -1,0 +1,140 @@
+//STATIC & NON-STATIC VARIABLES/METHODS
+
+ 
+                                                     STATIC & NON-STATIC VARIABLES/METHODS
+													 =====================================
+STATIC =>Static variables are shared among all instances of a class. 
+------   Static variable is like a global variable and is available to all methods.
+         The static keyword in Java is used for MEMORY MANAGEMENT mainly.
+		 STATIC Keyword is used for Variables,Methods,Blocks and Nested classes
+		 
+NON-STATIC =>Non static variables are specific to that instance of a class. 
+----------   Non static variable is like a local variable and they can be accessed through only instance of a class.
+ 
+                                                   TO UNDERSTANDING STATIC & NON-STATIC IS CLASSIFIED BY
+												   =====================================================
+												   +> How to Create..?
+												   +> How many Copies in Memory..?
+												   +> How to Access/Use them..?
+												   
+HOW TO CREATE..?
+----------------
+							
+            STATIC      |    NON-STATIC
+		 =============	| ===============
+	        use         |      Don't
+		  'Static'      |       use
+           keyword		|     'Static' 
+	                    |     keyword      
+	     				|				   
+												
+Example:-
+--------
+        static int add(int num1,int num2)   //STATIC method
+		{	
+			return num1 + num2;
+		}
+		
+
+		int add(int num1,int num2)          //NON-STATIC method
+		{	
+			return num1 + num2;
+		}												   
+												   
+HOW MANY COPIES..?
+------------------
+           					
+            STATIC      |    NON-STATIC
+		 =============	| ===============
+	        ONLY        |       'N'
+			'1'         |      COPIES
+			COPY        |
+			
+			
+HOW TO USE/ACCESS THEM..?
+-------------------------
+                     => Within Class <=
+		             ==================
+			STATIC VARIABLES      : Directly by Name
+			NON-STATIC VARIABLES  : Must create object
+			
+			STATIC METHOD        : Directly by Name
+			NON-STATIC METHOD    : Must create object
+		
+		             => IN Another Class <=
+					 ======================
+		    STATIC VARIABLES       : Classname.variable
+		    NON-STATIC VARIABLES   : Must create object
+		
+		    STATIC METHOD          : Classname.method
+		    NON-STATIC METHOD      : create Object
+   __________________________________________________________________
+   NOTE:: Always NON-STATIC VARIABLES/METHODS can't use directly 
+          in STATIC VARIABLES/METHODS Same class or Another Class
+   __________________________________________________________________
+				
+				           In Same Class:
+						   ==============
+			static variable       ==> static method        => Yes
+	        static method         ==> static method        => Yes
+	        non-static variable   ==> non-static method    => Yes
+	        non-static method     ==> non-static method    => Yes
+	
+	        non-static variable   ==> static method        => No(must create object)/Also Yes
+	        non-static method     ==> static method        => No
+			
+			
+		Example:-
+		--------
+		class Employee
+		{
+		
+		static double salary;
+		       int empId=98;
+		
+		static void print()
+		{
+			Employee emp1 = new Employee();
+			System.out.println(emp1.empId);
+		}
+		
+		double getSalary()
+		{
+			System.out.println(empId);
+			return salary;
+		}
+		
+		public static void main(String[] args)
+		{
+			Employee emp2 = new Employee();
+			System.out.println(emp2.getSalary());
+		}
+	    }
+
+        OUTPUT >> 
+		---------
+		98
+        0.0
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

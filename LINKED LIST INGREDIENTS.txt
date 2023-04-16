@@ -1,0 +1,55 @@
+public class Raghav
+{
+Node head;
+class Node                             //In the node there will be data and node reference. so,it must be declared
+     {
+	  object data;
+	  Node ref;
+	  Node(object data)            //Parameterized Constructor for getting data of object type in an node
+	  {
+	   this.data=data;
+	  }
+            createNode()
+            {
+             //body
+            }
+	    addNodeFirst()
+            {
+            //body
+            }
+            addNodeLast()
+            {
+             //body
+            }
+            deleteNodeFirst()
+            {
+             //body
+            }
+            deleteNodeLast()
+            {
+             //body
+            }
+            addIntermediateNode()
+            {
+             //body
+            }
+            searchNode()
+            {
+             //body
+            }
+            ascendNode()
+            {
+             //body
+            }
+            descendNode()
+            {
+            //body
+            }
+	   public static void main(String[] args)
+	 {
+	    // Create Object 'list'
+            // use 'list' Object to call functions/methods		
+            // use 'list' Object to print & show in OUTPUT console
+	 }
+	 
+}

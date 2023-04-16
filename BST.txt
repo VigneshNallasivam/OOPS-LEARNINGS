@@ -1,0 +1,144 @@
+//DATA STRUCTURES 4).Binary Search Tree
+
+
+
+                                                  
+												        BINARY SEARCH TREE(BST)
+														=======================
+                                   (HIGH-VALUE Node = RIGHT SIDE / LOW-VALUE Node = LEFT SIDE)
+						
+- BST is a type of data structure that comes under NON-Linear data structure
+
+Examples => Natural Tree 			
+            
+Input    => Nodes
+
+Output   => Nodes
+
+Entries  => RooT Node / Branch Nodes /Leaf Nodes
+
+Diagram  =>  
+
+               56
+             /   \
+           30     70
+         /  \   /   \
+        22  40 60   95
+       /         \
+      11         65
+     /  \       /  \
+    3   16     63   67
+
+TIME COMPLEXITY 
+===============
+For All Operations Insertion,Deletion & Search
+Here, n is the number of nodes in the tree:
+BEST CASE COMPLEXITY  => 0(log n) 
+AVG CASE COMPLEXITY   => 0(log n)
+WORST CASE COMPLEXITY => 0(n)
+
+SPACE COMPLEXITY
+================
+For All Operations Space Complexity is 0(n)
+		
+FUNCTIONS OF BST:-
+====================
+#Insertion Operation
+#Deletion Operation
+#Search Operation
+
+Example :-
+----------
+//IMPLEMENTING FUNCTIONS OF BST IN CODING
+public class BinarySearchTree 
+{
+	class Node 
+	{
+		int data;
+		Node left;
+		Node right;
+		Node(int data)
+		{
+			this.data = data;
+		}
+	}
+	Node root;
+	BinarySearchTree()
+	{
+		root = null;
+	}
+	void insert(int data)
+	{
+		root = insertRec(root,data);
+
+	}
+	Node insertRec(Node root,int data)
+	{
+		if(root == null)
+		{
+			root = new Node(data);
+			return root;
+		}
+
+		else if(data < root.data)
+			root.left = insertRec(root.left,data);
+		else
+			root.right = insertRec(root.right,data);
+		return root;
+	}
+	void order()
+	{
+		orderRec(root);
+	}
+	void orderRec(Node root)
+	{
+		if(root == null)
+			return;
+
+		orderRec(root.left);
+		System.out.print(root.data + " ");
+		orderRec(root.right);
+	}
+	public boolean search(Node root, int input)
+	{
+		if(root == null)
+		{
+			return false;
+		}
+		if(root.data == input)
+		{
+			return true;
+		}
+		boolean result1 = search(root.left,input);
+		if(result1 == true)
+			return true;
+		boolean result2 = search(root.right,input);
+		return result2;
+	}
+	public static void main(String[] args)
+	{
+		BinarySearchTree tree = new BinarySearchTree();
+		tree.insert(56);
+		tree.order();
+		System.out.println();
+		tree.insert(30);
+		tree.order();
+		System.out.println();
+		tree.insert(70);
+		tree.order();
+		if(tree.search(tree.root, 56)== true )
+		{
+			System.out.println("\n56 is present");
+		}
+		else
+			System.out.println("\n56 is not  present");
+	}
+}
+OUTPUT>>
+--------
+56 
+30 56 
+30 56 70 //56 is root node 
+         //70 is max value, so Right side of 56
+		 //30 is min value, so Left side of 56
+56 is present

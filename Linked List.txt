@@ -1,0 +1,131 @@
+public class LinkedList 
+{
+	Node head;
+	class Node
+	{
+		Object data;
+		Node ref;
+		Node(Object data)
+		{
+			this.data = data;
+		}
+	}
+//	public void elements(Object data)
+//	{
+//		Node newNode = new Node(data);
+//		System.out.print(newNode.data + "->");
+//		
+//	}
+	public void addNodeFirst(Object data)
+	{
+		Node newNode = new Node(data);
+		newNode.ref = head;
+		head = newNode;
+	}
+	public void addNodeLast(Object data)
+	{
+		Node newNode = new Node(data);
+		if(head == null)
+			head = newNode;
+		else if(head.ref == null)
+			head.ref = newNode;
+		else
+		{
+			Node temp = head;
+			while(temp.ref!=null)
+			{
+				temp = temp.ref;
+			}
+			temp.ref = newNode;	
+		}
+	}
+	public void addNodeIntermediate(Object data,int position)
+	{
+		Node newNode = new Node(data);
+		int index = 0;
+		Node left = head;
+		Node right = left.ref;
+		while(index < (position-1))
+		{
+			left = left.ref;
+			right = right.ref;
+			index++;
+		}
+		newNode.ref=right;
+		left.ref = newNode;
+	}
+	public void deleteNodeFirst()
+    {
+    	head = head.ref;
+    }
+    public void deleteNodeLast()
+    {
+		if(head == null)
+			System.out.println("Linked List is Empty");
+		else if(head.ref == null)
+			head = null;
+		else
+		{
+			Node temp = head;
+			while(temp.ref.ref!=null)
+			{
+				temp = temp.ref;
+			}
+			temp.ref = null;	
+		}
+    	
+    }
+    public Object searchNode(Object input)
+    {
+    	Node temp = head;
+    	int index = 0;
+    	while(temp != null) 
+    	{
+    		index++;
+    		if(temp.data == input)
+    		{
+    			String res = temp.data + "found at index" +index;
+    			return res;
+    		}
+    		temp = temp.ref;
+    	}
+    	return null;
+    }
+    public void display()
+    {
+    	Node temp = head;
+    	while(temp != null) 
+    	{
+    		if(temp.ref!= null)
+    		    System.out.print(temp.data + "->");
+    		else
+    			System.out.println(temp.data);
+    		temp = temp.ref;
+    	}
+    }
+    public static void main(String[] args)
+    {
+    	LinkedList list = new LinkedList();
+//    	list.elements(10);
+//    	list.display();
+//    	list.elements(20);
+//    	list.display();
+//    	list.elements(30);
+//    	list.display();
+//    	list.elements(40);
+//    	list.display();
+//    	list.elements(50);
+//    	list.display();
+    	list.addNodeFirst(10);
+    	list.display();
+    	list.addNodeLast(20);
+    	list.display();
+    	list.addNodeIntermediate(5,1);
+    	list.display();
+    	list.deleteNodeLast();
+    	list.display();
+    	list.deleteNodeFirst();
+    	list.display();
+    	System.out.println(list.searchNode(5));
+     }
+}

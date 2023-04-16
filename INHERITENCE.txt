@@ -1,0 +1,255 @@
+//INHERITANCE
+//'SUPER'Keyword
+													  
+													  
+													  
+													  INHERITANCE
+													  ===========
+-When a class deriving/Acquiring/Getting/Inheriting from another class,
+ the child class will inherit all the public and protected properties and methods from the parent class. 
+-In addition, it can have its own properties and methods. 
+-An inherited class is defined by using the 'extends' keyword.
+-USE: It provides code re-usability. 
+      In place of writing the same code, again and again, we can simply inherit the properties of one class into the other
+													  
+									_________________________				  
+									{PARENT/SUPER/BASE CLASS}
+									_________________________
+									           ||
+									           ||
+									           ||
+											   ||
+											   ||  //properities got inherited from parent class to child class
+											   ||
+											   ||
+											   ||
+								    ___________||____________
+								    {CHILD/DERIVED/SUB CLASS}
+									_________________________
+									
+									
+									
+Syntax:-
+-------
+     Class SuperClass
+	 {
+	     //methods and fields
+	 }
+	 
+	 
+     class subClass extends superClass  
+     {  
+         //methods and fields of subClass
+     } 
+	 
+	 
+TYPES:-
+------
+(https://www.google.com/search?client=firefox-b-d&q=types+of+inheritance+in+java)
+https://www.javatpoint.com/inheritance-in-java
+
+SINGLE INHERITANCE
+------------------
+public class Parent 
+{
+	void parentShow()
+	{
+		System.out.println("Parent Properties...!!");
+	}
+}
+class Child extends Parent
+{
+	void childShow()
+	{
+		parentShow();
+		System.out.println("Child Properties...!!!");
+	}
+}
+class Overall
+{
+	public static void main(String[] args)
+	{
+		Child objx = new Child();
+		objx.childShow();
+	}
+}
+OUTPUT>>
+--------
+Parent Properties...!!
+Child Properties...!!!
+
+
+MULTI-LEVEL INHERITANCE
+-----------------------
+public class Sample 
+{
+	void animal()
+	{
+		System.out.println("Animal Eating.....");
+	}
+}
+class Test extends Sample
+{
+	void bird()
+	{
+		animal();
+		System.out.println("Birds Chirrping....");
+		
+	}
+}
+class Demo extends Test
+{
+	void insect()
+	{
+		bird();
+		System.out.println("Insects diseasing....");
+	}
+}
+class Overall
+{
+	public static void main(String[] args)
+	{
+		Demo objx = new Demo();
+		objx.insect();
+	}
+}
+OUTPUT>>
+--------
+Animal Eating.....
+Birds Chirrping....
+Insects diseasing....
+
+HIERARCHICAL INHERITANCE
+------------------------
+public class Animal 
+{
+	void eat()
+	{
+		System.out.println("Eating...");
+	}
+}
+class Dog extends Animal
+{
+	void bark()
+	{
+		System.out.println("Barking...");
+	}
+}
+class Cat extends Animal
+{
+	void meow()
+	{
+		System.out.println("Meowing...");
+	}
+}
+class Overall
+{
+	public static void main(String[] args)
+	{
+		Cat objx = new Cat();
+		objx.eat();
+		objx.meow();
+	}
+}
+OUTPUT>>
+--------
+Eating...
+Meowing...
+
+HYBRID INHERITANCE
+------------------
+MULTIPLE INHERITANCE
+--------------------
+- To reduce the complexity and simplify the language, multiple inheritance is not supported in java.
+- Consider a scenario where A, B, and C are three classes. 
+  The C class inherits A and B classes. 
+  If A and B classes have the same method and you call it from child class object,there will be ambiguity to call the method of A or B class. 
+- This Ambiguity Problem can be OverCome by "Interface" Method.   
+	
+
+
+Example:-
+--------
+class Doctor                                 //File 'A'
+{
+ void DoctorDetails() 
+ {
+  System.out.println("Doctor Details...");
+ }
+}
+
+class Surgeon extends Doctor 
+{
+ void SurgeonDetails() 
+ {
+  System.out.println("Surgen Detail...");
+ }
+}
+
+    
+public class Hospital                     //File 'B'
+{
+ public static void main(String args[]) 
+ {
+  Surgeon obj = new Surgeon();            //Object should be Created for last inherited child Class
+  obj.DoctorDetails();
+  obj.SurgeonDetails();
+ }
+}	
+
+OUTPUT >>
+---------
+Doctor Details...
+Surgen Detail...
+
+                                                     'SUPER'Keyword
+													 ===============
+		        	 The keyword 'super' can be used to access any data member or methods of the parent class.
+                             'super' keyword can be used at variable, method and constructor level.
+							 
+Syntax:-
+--------
+ super.<method-name>();
+ 
+Example:-
+---------
+class Animal                                       //File 'A'
+{ 
+  String Name = "Scooby";
+  public void animalSound() 
+  {
+    System.out.println("The animal makes a sound");
+  }
+}
+
+
+class Dog extends Animal 
+{ 
+  public void dogSound() 
+  {
+    System.out.println(super.Name);               //Accessing Variable of Parent Class using 'super' Keyword
+    super.animalSound();                          //Accessing Method of Parent Class using 'super' Keyword
+    System.out.println("The dog says: bow wow");
+  }
+  
+}
+
+public class OverallSound                          //File 'B'
+{
+public static void main(String[] args)
+{
+Dog objx = new Dog();
+objx.animalSound();
+objx.dogSound();
+}
+}
+
+OUTPUT >>
+---------
+The animal makes a sound
+Scooby
+The animal makes a sound
+The dog says: bow wow
+
+
+ 

@@ -1,0 +1,114 @@
+//CONSTRUCTOR
+
+
+                                                        CONSTRUCTOR
+														===========
+														
+WHAT IS CONSTRUCTOR..?
+======================
+														 
+CONSTRUCTOR=> Initiliaze & Assigning Values to Object
+               -Constructor : Special Method in Java
+	                        * Initiliaze variables/states of object
+	                        * Same name as Class-name
+	                        * No Return-Type 
+							* 'this' is the Keyword used in Constructor
+			
+Types of Constructors:
+----------------------
+	1. Default constructor              : Created by JVM
+	2. Zero-arg constructor             : User-Defined No Parameters
+	3. Parameterized constructor        : User-Defined with Parameters
+	
+
+Example:-
+---------
+public class Display 
+{
+
+  int a;
+  boolean b;
+
+  public static void main(String[] args) 
+  {
+    Display obj = new Display();             //Default constructor 'Display()' is Created.
+    System.out.println("Default Value:");
+    System.out.println("a = " + obj.a);
+    System.out.println("b = " + obj.b);
+  }
+}
+
+ OUTPUT >>
+----------- 
+ Default Value:
+ a = 0
+ b = false 
+ 
+Example:-
+---------
+class Bike
+{    
+Bike()                                     //Zero-arg Constructor Created
+{
+System.out.println("Bike is created");
+}   
+public static void main(String args[])
+{    
+Bike obj = new Bike();
+}  
+} 
+ 
+ OUTPUT >>
+----------- 
+Bike is created
+ 
+ 
+ Example:-
+ ---------
+import java.util.Scanner;
+public class Test 
+{
+   int num;
+   String data;
+   float value;
+   
+   Test(int num, String data, float value)   //Parameterized constructor is created
+   {
+      this.num = num;
+      this.data = data;
+      this.value = value;
+   }
+   
+   public static void main(String args[])
+   {
+      Scanner sc = new Scanner(System.in);
+	  
+      System.out.println("Enter an integer value: ");
+      int num = sc.nextInt();
+	  
+      System.out.println("Enter a string value: ");
+      String data = sc.next();
+	  
+      System.out.println("Enter a floating point value: ");
+      float value= sc.nextFloat();  
+	  
+      Test obj = new Test(num, data, value);
+      System.out.println(obj.num);
+      System.out.println(obj.data);
+      System.out.println(obj.value);
+	  
+   }
+
+}
+
+ OUTPUT >>
+ ---------
+ Enter an integer value: 
+ 45
+ Enter a string value: 
+ vicky
+ Enter a floating point value: 
+ 0.7
+ 45
+ vicky
+ 0.7

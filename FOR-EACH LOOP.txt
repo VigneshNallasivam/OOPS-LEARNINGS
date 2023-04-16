@@ -1,0 +1,72 @@
+//FOR-EACH LOOP /ENHANCED LOOP
+
+
+
+
+                                                               FOR-EACH LOOP /ENHANCED LOOP
+															   ============================
+- It is known as the for-each loop because it traverses each element one by one.
+- It is mainly used to traverse the array or collection elements.
+- The advantage of the for-each loop is that it eliminates the possibility of bugs and makes the code more readable. 
+
+ADVANTAGES:-
+===========
+-> It makes the code more readable.
+-> It eliminates the possibility of programming errors.
+
+DISADVANTAGES:-
+==============
+-> Cannot traverse the elements in reverse order. 
+-> No possibility of Sorting Elements.
+-> Cannot traverse the odd or even elements.
+-> you do not have the option to skip any element because it does not work on an index basis.
+-> Cannot process two decision making statements at once. 
+
+Syntax:-
+--------
+for (Data-type  VariableName : Array/CollectionName) 
+{
+  //Code Block
+}
+
+Example:-
+---------
+//SIMPLE FOR-EACH LOOP EXECUTION USING ARRAY-LIST
+import java.util.ArrayList;
+public class Sample
+{
+	void fruits()
+	{
+		ArrayList<String> list = new ArrayList<>(); 
+		list.add("Apple");
+		list.add("Banana");
+		list.add("Grapes");
+		list.add("Orange");
+		list.add("Strawberry");
+		System.out.println(list);
+		
+		for(String fruits:list)
+		{
+			System.out.println(fruits);
+		}
+		
+	}
+	
+	public static void main(String[] args)
+	{
+		Sample obj = new Sample();
+		System.out.println("The Fruits Are :");
+		obj.fruits();
+	}
+}
+OUTPUT>>
+--------
+The Fruits Are :
+[Apple, Banana, Grapes, Orange, Strawberry]
+Apple
+Banana
+Grapes
+Orange
+Strawberry
+
+
