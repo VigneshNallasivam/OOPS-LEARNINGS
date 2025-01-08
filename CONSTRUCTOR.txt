@@ -1,8 +1,8 @@
 //CONSTRUCTOR
 
 
-                                                        CONSTRUCTOR
-														===========
+                                                        CONSTRUCTOR & DESTRUCTOR
+							=========================
 														
 WHAT IS CONSTRUCTOR..?
 ======================
@@ -13,6 +13,12 @@ CONSTRUCTOR=> Initiliaze & Assigning Values to Object
 	                        * Same name as Class-name
 	                        * No Return-Type 
 							* 'this' is the Keyword used in Constructor
+
+WHAT IS DESTRUCTOR..?
+======================
+                 - A destructor is a special method in object-oriented programming (OOP) used to clean up resources when an object is no longer needed.
+                 - NOTE : But there is no concept of Destructor in JAVA.
+                 - Alternative of destructor in java is Garbage Collector & finalize() method [Depricated in Modern Java Versions].
 			
 Types of Constructors:
 ----------------------
